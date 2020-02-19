@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
+//
 const Login = () => {
   //local state
   const [user, setUser] = useState({ email: '', password: '' });
@@ -13,6 +14,9 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    //validation
+
+    //action
   };
 
   return (
@@ -48,9 +52,12 @@ const Login = () => {
           />
         </div>
         <button type='submit' className='btn btn-primary'>
-          Submit
+          Sign in
         </button>
       </form>
+      <Link to={'/new-account'} className='nav-link'>
+        Get account
+      </Link>
     </div>
   );
 };
