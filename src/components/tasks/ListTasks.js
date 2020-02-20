@@ -12,9 +12,6 @@ const ListTasks = () => {
     <div className='card mx-3'>
       <div className='card-header'>Project: Mat vagn</div>
       <ul className='list-group list-group-flush'>
-        {/* <li className='list-group-item'>Cras justo odio</li>
-        <li className='list-group-item'>Dapibus ac facilisis in</li>
-        <li className='list-group-item'>Vestibulum at eros</li> */}
         {projectTasks.length === 0 ? (
           <li className='list-group-item bg-info'>
             There is not tasks for this project

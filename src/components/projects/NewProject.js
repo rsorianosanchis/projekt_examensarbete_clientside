@@ -1,6 +1,13 @@
-import React, { Fragment, useState } from 'react';
-
+import React, { Fragment, useState, useContext } from 'react';
+import projectContext from '../../context/projects/projectContext';
+//
 const NewProject = () => {
+  //
+  //man har tillgänglit till alla ProjectState igenom context
+  const newProjectContext = useContext(projectContext);
+  //const {showForm}
+  //
+  //local state
   const [project, setProject] = useState({
     projectname: ''
   });
