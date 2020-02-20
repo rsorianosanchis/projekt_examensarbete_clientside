@@ -9,6 +9,7 @@ const ListProjects = () => {
   ];
   return (
     <div>
+      <h3>Your projects</h3>
       <ul className='list-group'>
         {projects.map(project => (
           <Project key={project.name} project={project} />

@@ -5,13 +5,18 @@ const NewProject = () => {
   //
   //man har tillgänglit till alla ProjectState igenom context
   const newProjectContext = useContext(projectContext);
-  //const {showForm}
+  const { showForm, setShowForm } = newProjectContext; // show/hide förmulär när click
   //
   //local state
   const [project, setProject] = useState({
     projectname: ''
   });
   const { projectname } = project;
+
+  const handleClick = e => {
+    e.preventDefault();
+    setShowForm();
+  };
 
   const handleChange = e => {
     e.preventDefault();
@@ -28,20 +33,26 @@ const NewProject = () => {
   };
   return (
     <Fragment>
-      <button type='button' className='btn btn-block btn-primary mb-5'>
+      <button
+        type='button'
+        className='btn btn-block btn-primary mb-5'
+        onClick={handleClick}
+      >
         Create New Project
       </button>
-      <form onSubmit={handleSubmit}>
-        <input
-          className='form-control'
-          type='text'
-          placeholder='Project name'
-          name='projectname'
-          value={projectname}
-          onChange={handleChange}
-        />
-        <input type='submit' className='btn btn-sm btn-primary' value='Add' />
-      </form>
+      {showForm ? (
+        <form onSubmit={handleSubmit}>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Project name'
+            name='projectname'
+            value={projectname}
+            onChange={handleChange}
+          />
+          <input type='submit' className='btn btn-sm btn-primary' value='Add' />
+        </form>
+      ) : null}
     </Fragment>
   );
 };

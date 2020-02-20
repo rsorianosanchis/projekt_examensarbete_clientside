@@ -4,18 +4,13 @@ import ListProjects from '../projects/ListProjects';
 
 const SideBar = () => {
   return (
-    <div className='d-flex flex-column justify-content-start sidebar p-3 align-items-center'>
-      <div className='flex-grow-1'>
-        <h3 className='font-weight-bold'>
-          Area A <span className=' font-weight-light'> Application</span>
-        </h3>
-        <NewProject />
-      </div>
-      <div className=' flex-grow-1'>
-        <h3>Your projects</h3>
-        <ListProjects />
-      </div>
-      <div className=' flex-grow-1'></div>
+    <div className='d-flex flex-column justify-content-start p-3 align-items-center'>
+      <h3 className='font-weight-bold text-center'>
+        My Tasks <small className='font-weight-light'> Application</small>
+      </h3>
+      <NewProject />
+
+      <ListProjects />
     </div>
   );
 };
