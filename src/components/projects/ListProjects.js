@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Project from './Project';
+import projectContext from '../../context/projects/projectContext';
 
 const ListProjects = () => {
-  const projects = [
-    { name: 'myprojecttest1' },
-    { name: 'myprojecttest2' },
-    { name: 'myprojecttest3' }
-  ];
+  //
+  const listProjectsContext = useContext(projectContext);
+  const { projects, getProjectsFn } = listProjectsContext;
+  //
+  useEffect(() => {
+    // fetch db to get projects
+    //
+    //aqui caragaremos parametr
+    //getProjectsFn(response);
+    getProjectsFn();
+  }, []);
+
+  if (projects.length === 0) {
+    return null;
+  }
+
   return (
     <div>
       <h3>Your projects</h3>
       <ul className='list-group'>
         {projects.map(project => (
-          <Project key={project.name} project={project} />
+          <Project key={project.id} project={project} />
         ))}
       </ul>
     </div>

@@ -9,7 +9,6 @@ const SideBar = () => {
         My Tasks <small className='font-weight-light'> Application</small>
       </h3>
       <NewProject />
-
       <ListProjects />
     </div>
   );

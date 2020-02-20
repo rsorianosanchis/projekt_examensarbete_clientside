@@ -5,7 +5,7 @@ const NewProject = () => {
   //
   //man har tillgänglit till alla ProjectState igenom context
   const newProjectContext = useContext(projectContext);
-  const { showForm, setShowForm } = newProjectContext; // show/hide förmulär när click
+  const { showForm, setShowFormFn } = newProjectContext; // show/hide förmulär när click
   //
   //local state
   const [project, setProject] = useState({
@@ -15,7 +15,7 @@ const NewProject = () => {
 
   const handleClick = e => {
     e.preventDefault();
-    setShowForm();
+    setShowFormFn();
   };
 
   const handleChange = e => {
