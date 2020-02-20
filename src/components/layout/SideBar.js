@@ -1,5 +1,6 @@
 import React from 'react';
 import NewProject from '../projects/NewProject';
+import ListProjects from '../projects/ListProjects';
 
 const SideBar = () => {
   return (
@@ -11,7 +12,8 @@ const SideBar = () => {
         <NewProject />
       </div>
       <div className=' flex-grow-1'>
-        <h3>Area B</h3>
+        <h3>Your projects</h3>
+        <ListProjects />
       </div>
       <div className=' flex-grow-1'></div>
     </div>
