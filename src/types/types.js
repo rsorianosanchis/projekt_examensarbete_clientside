@@ -1,3 +1,6 @@
 // actions som händer
 export const FORM_NEW_PROJECT = 'FORM_NEW_PROJECT';
 export const GET_PROJECTS = 'GET_PROJECTS';
+export const ADD_PROJECT = 'ADD_PROJECT';
+export const SHOW_NEW_PROJECT_FORM_ERROR = 'SHOW_NEW_PROJECT_FORM_ERROR';
+export const SELECTED_PROJECT = 'SELECTED_PROJECT';

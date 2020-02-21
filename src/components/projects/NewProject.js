@@ -1,18 +1,26 @@
 import React, { Fragment, useState, useContext } from 'react';
+import Error from '../diagnosis/Error';
 import projectContext from '../../context/projects/projectContext';
 //
 const NewProject = () => {
   //
   //man har tillgänglit till alla ProjectState igenom context
   const newProjectContext = useContext(projectContext);
-  const { showForm, setShowFormFn } = newProjectContext; // show/hide förmulär när click
+  const {
+    showFormNewProjectError,
+    showForm,
+    setShowFormFn,
+    addNewProjectFn,
+    showFormErrorFn
+  } = newProjectContext; // show/hide förmulär när click
   //
   //local state
   const [project, setProject] = useState({
-    projectname: ''
+    name: ''
   });
-  const { projectname } = project;
 
+  const { name } = project;
+  //
   const handleClick = e => {
     e.preventDefault();
     setShowFormFn();
@@ -26,13 +34,23 @@ const NewProject = () => {
   const handleSubmit = e => {
     e.preventDefault();
     //validar form
+    if (name.trim() === '') {
+      showFormErrorFn();
+      return;
+    }
 
     //enviar datos de project al setState de context
-
+    addNewProjectFn(project);
     //reincoar el form
+    setProject({
+      name: ''
+    });
   };
   return (
     <Fragment>
+      {showFormNewProjectError ? (
+        <Error msg='Field project name is obligatory' />
+      ) : null}
       <button
         type='button'
         className='btn btn-block btn-primary mb-5'
@@ -46,8 +64,8 @@ const NewProject = () => {
             className='form-control'
             type='text'
             placeholder='Project name'
-            name='projectname'
-            value={projectname}
+            name='name'
+            value={name}
             onChange={handleChange}
           />
           <input type='submit' className='btn btn-sm btn-primary' value='Add' />
