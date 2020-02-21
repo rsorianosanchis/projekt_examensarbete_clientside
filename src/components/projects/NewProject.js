@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react';
-import Error from '../diagnosis/Error';
+import Alert from '../diagnosis/Alert';
 import projectContext from '../../context/projects/projectContext';
 //
 const NewProject = () => {
@@ -49,7 +49,7 @@ const NewProject = () => {
   return (
     <Fragment>
       {showFormNewProjectError ? (
-        <Error msg='Field project name is obligatory' />
+        <Alert msg='Field project name is obligatory' />
       ) : null}
       <button
         type='button'

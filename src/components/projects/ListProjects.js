@@ -16,7 +16,7 @@ const ListProjects = () => {
   }, []);
 
   if (projects.length === 0) {
-    return null;
+    return <p>Not projects created.</p>;
   }
 
   return (

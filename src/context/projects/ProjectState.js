@@ -8,7 +8,8 @@ import {
   GET_PROJECTS,
   ADD_PROJECT,
   SHOW_NEW_PROJECT_FORM_ERROR,
-  SELECTED_PROJECT
+  SELECTED_PROJECT,
+  DELETE_SELECTED_PROJECT
 } from '../../types/types';
 
 //temporal
@@ -50,11 +51,22 @@ const ProjectState = props => {
       payload: project
     });
   };
-  //
+  //om click addproject utan ingen string i form
   const showFormErrorFn = () => {
     dispatch({
       type: SHOW_NEW_PROJECT_FORM_ERROR
     });
+  };
+  //get project from lista för flytta till main area hantering
+  const selectProjectFn = project => {
+    dispatch({
+      type: SELECTED_PROJECT,
+      payload: project
+    });
+  };
+  //delete selected project from list tasks button
+  const deleteProjectFn = project => {
+    dispatch({ type: DELETE_SELECTED_PROJECT, payload: project.id });
   };
 
   return (
@@ -67,7 +79,9 @@ const ProjectState = props => {
         setShowFormFn,
         getProjectsFn,
         addNewProjectFn,
-        showFormErrorFn
+        showFormErrorFn,
+        selectProjectFn,
+        deleteProjectFn
       }}
     >
       {props.children}

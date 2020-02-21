@@ -2,7 +2,9 @@ import {
   FORM_NEW_PROJECT,
   GET_PROJECTS,
   ADD_PROJECT,
-  SHOW_NEW_PROJECT_FORM_ERROR
+  SHOW_NEW_PROJECT_FORM_ERROR,
+  SELECTED_PROJECT,
+  DELETE_SELECTED_PROJECT
 } from '../../types/types';
 
 export default (state, action) => {
@@ -22,6 +24,19 @@ export default (state, action) => {
       return {
         ...state,
         showFormNewProjectError: true
+      };
+    case SELECTED_PROJECT:
+      return {
+        ...state,
+        selectedProject: action.payload
+      };
+    case DELETE_SELECTED_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(
+          project => project.id !== action.payload
+        ),
+        selectedProject: null
       };
     default:
       return state;
