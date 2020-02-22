@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
 import Alert from '../diagnosis/Alert';
@@ -15,8 +15,15 @@ const FormTask = () => {
     showFormNewTaskError,
     addTaskFn,
     showFormErrorFn,
-    getTasksFn
+    getTasksFn,
+    selectedTask
   } = t_context;
+
+  useEffect(() => {
+    if (selectedTask !== null) {
+      setTaskName();
+    }
+  }, [selectedTask]);
   //{ taskName: 'Potatasdis', state: true, projectId: 3 }
   const handleChange = e => {
     e.preventDefault();

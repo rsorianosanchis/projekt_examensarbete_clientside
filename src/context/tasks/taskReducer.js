@@ -2,7 +2,9 @@ import {
   GET_TASKS_OF_PROJECT,
   ADD_TASK,
   SHOW_NEW_TASK_FORM_ERROR,
-  DELETE_TASK
+  DELETE_TASK,
+  TASK_STATE,
+  SELECTED_TASK_TO_EDIT
 } from '../../types/types';
 
 export default (state, action) => {
@@ -26,6 +28,23 @@ export default (state, action) => {
       return {
         ...state,
         tasks: state.tasks.filter(item => item.id !== action.payload)
+      };
+    case TASK_STATE:
+      return {
+        ...state,
+        projectTasks: [
+          state.projectTasks.map(item => {
+            if (item.id === action.payload) {
+              item.state === true ? (item.state = false) : (item.state = true);
+            }
+            return item;
+          })
+        ]
+      };
+    case SELECTED_TASK_TO_EDIT:
+      return {
+        ...state,
+        selectedTask: action.payload
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Task from './Task';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
@@ -8,11 +8,8 @@ const ListTasks = () => {
   const { selectedProject, deleteProjectFn } = p_context;
   //
   const t_context = useContext(taskContext);
-  const { projectTasks, tasks } = t_context;
+  const { projectTasks } = t_context;
   //
-
-  //useEffect(() => {}, [tasks]);
-
   if (selectedProject === null) {
     return null;
   }

@@ -6,14 +6,27 @@ import {
   GET_TASKS_OF_PROJECT,
   ADD_TASK,
   SHOW_NEW_TASK_FORM_ERROR,
-  DELETE_TASK
+  DELETE_TASK,
+  TASK_STATE,
+  SELECTED_TASK_TO_EDIT
 } from '../../types/types';
 
 const TaskState = props => {
   const initialState = {
-    tasks: [],
+    tasks: [
+      { id: 1, taskName: 'Tomates', state: true, projectId: 1 },
+      { id: 2, taskName: 'Bread', state: true, projectId: 2 },
+      { id: 3, taskName: 'Fisk', state: false, projectId: 3 },
+      { id: 4, taskName: 'kiwi', state: true, projectId: 4 },
+      { id: 5, taskName: 'hh', state: true, projectId: 1 },
+      { id: 6, taskName: 'Breallld', state: true, projectId: 2 },
+      { id: 7, taskName: 'Fasdisk', state: false, projectId: 2 },
+      { id: 8, taskName: 'Potatasdis', state: true, projectId: 3 }
+    ],
     projectTasks: null,
-    showFormNewTaskError: false
+    getProjectTask: null,
+    showFormNewTaskError: false,
+    selectedTask: null
   };
 
   //state dispatch declaration
@@ -51,16 +64,33 @@ const TaskState = props => {
       payload: taskId
     });
   };
+  //hitta selected task by id, ändra state
+  const changeTaskStateFn = taskId => {
+    dispatch({
+      type: TASK_STATE,
+      payload: taskId
+    });
+  };
+  //get complete task när man clika på edit
+  const getSelectedTaskFn = task => {
+    dispatch({
+      type: SELECTED_TASK_TO_EDIT,
+      payload: task
+    });
+  };
 
   return (
     <taskContext.Provider
       value={{
         projectTasks: state.projectTasks,
         showFormNewTaskError: state.showFormNewTaskError,
+        selectedTask: state.selectedTask,
         getTasksFn,
         addTaskFn,
         deleteTaskFn,
-        showFormErrorFn
+        showFormErrorFn,
+        changeTaskStateFn,
+        getSelectedTaskFn
       }}
     >
       {props.children}
