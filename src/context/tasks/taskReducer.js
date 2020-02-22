@@ -55,7 +55,8 @@ export default (state, action) => {
             item.name = action.payload.name;
           }
           return item;
-        })
+        }),
+        selectedTask: null
       };
     default:
       return state;
