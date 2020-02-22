@@ -1,7 +1,11 @@
 import React, { useReducer } from 'react';
 import taskContext from './taskContext';
 import taskReducer from './taskReducer';
-import { GET_TASKS_OF_PROJECT } from '../../types/types';
+import {
+  GET_TASKS_OF_PROJECT,
+  ADD_TASK,
+  SHOW_NEW_TASK_FORM_ERROR
+} from '../../types/types';
 
 const TaskState = props => {
   const initialState = {
@@ -15,7 +19,8 @@ const TaskState = props => {
       { taskName: 'Fasdisk', state: false, projectId: 2 },
       { taskName: 'Potatasdis', state: true, projectId: 3 }
     ],
-    projectTasks: []
+    projectTasks: null,
+    showFormNewTaskError: false
   };
 
   //state dispatch declaration
@@ -30,12 +35,28 @@ const TaskState = props => {
       payload: projectId
     });
   };
+  //add task to tasks
+  const addTaskFn = task => {
+    console.log(task);
+
+    dispatch({ type: ADD_TASK, payload: task });
+  };
+  //
+  // error om new task tom field
+  const showFormErrorFn = () => {
+    dispatch({
+      type: SHOW_NEW_TASK_FORM_ERROR
+    });
+  };
 
   return (
     <taskContext.Provider
       value={{
         projectTasks: state.projectTasks,
-        getTasksFn
+        showFormNewTaskError: state.showFormNewTaskError,
+        getTasksFn,
+        addTaskFn,
+        showFormErrorFn
       }}
     >
       {props.children}

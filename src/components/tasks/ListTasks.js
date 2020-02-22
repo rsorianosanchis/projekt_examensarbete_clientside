@@ -8,8 +8,11 @@ const ListTasks = () => {
   const { selectedProject, deleteProjectFn } = p_context;
   //
   const t_context = useContext(taskContext);
-  const { projectTasks } = t_context;
+  const { projectTasks, tasks } = t_context;
   //
+
+  //useEffect(() => {}, [tasks]);
+
   if (selectedProject === null) {
     return null;
   }
@@ -19,10 +22,6 @@ const ListTasks = () => {
     //delete actual project
     deleteProjectFn(selectedProject);
   };
-
-  // useEffect(() => {
-  //   //gettasks från db med selectedProject uppgiftern
-  // });
 
   return (
     <div className='card mx-3'>
