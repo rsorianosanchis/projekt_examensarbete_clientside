@@ -1,7 +1,8 @@
 import {
   GET_TASKS_OF_PROJECT,
   ADD_TASK,
-  SHOW_NEW_TASK_FORM_ERROR
+  SHOW_NEW_TASK_FORM_ERROR,
+  DELETE_TASK
 } from '../../types/types';
 
 export default (state, action) => {
@@ -21,6 +22,11 @@ export default (state, action) => {
       };
     case SHOW_NEW_TASK_FORM_ERROR:
       return { ...state, showFormNewTaskError: true };
+    case DELETE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.filter(item => item.id !== action.payload)
+      };
     default:
       return state;
   }

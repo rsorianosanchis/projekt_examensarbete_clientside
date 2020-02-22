@@ -11,7 +11,12 @@ const FormTask = () => {
   const { selectedProject } = p_context;
   //
   const t_context = useContext(taskContext);
-  const { showFormNewTaskError, addTaskFn, showFormErrorFn } = t_context;
+  const {
+    showFormNewTaskError,
+    addTaskFn,
+    showFormErrorFn,
+    getTasksFn
+  } = t_context;
   //{ taskName: 'Potatasdis', state: true, projectId: 3 }
   const handleChange = e => {
     e.preventDefault();
@@ -31,7 +36,10 @@ const FormTask = () => {
       projectId: selectedProject.id
     });
 
+    getTasksFn(selectedProject.id);
+
     setTaskName({ name: '' });
+
     console.log('submit');
   };
   //
