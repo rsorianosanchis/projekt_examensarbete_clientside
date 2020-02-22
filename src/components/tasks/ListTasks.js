@@ -4,7 +4,7 @@ import projectContext from '../../context/projects/projectContext';
 
 const ListTasks = () => {
   const project = useContext(projectContext);
-  const { selectedProject, deleteProjectFn, getProjectsFn } = project;
+  const { selectedProject, deleteProjectFn } = project;
   console.log(selectedProject);
 
   if (selectedProject === null) {
