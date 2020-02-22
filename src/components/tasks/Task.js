@@ -28,7 +28,7 @@ const Task = ({ task }) => {
 
   return (
     <li className='list-group-item d-flex justify-content-between align-items-center'>
-      <p className='m-0 flex-grow-1'>{task.taskName}</p>
+      <p className='m-0 flex-grow-1'>{task.name}</p>
 
       {task.state ? (
         <button

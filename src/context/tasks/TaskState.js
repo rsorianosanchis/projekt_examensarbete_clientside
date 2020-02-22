@@ -8,20 +8,21 @@ import {
   SHOW_NEW_TASK_FORM_ERROR,
   DELETE_TASK,
   TASK_STATE,
-  SELECTED_TASK_TO_EDIT
+  SELECTED_TASK_TO_EDIT,
+  EDIT_TASK
 } from '../../types/types';
 
 const TaskState = props => {
   const initialState = {
     tasks: [
-      { id: 1, taskName: 'Tomates', state: true, projectId: 1 },
-      { id: 2, taskName: 'Bread', state: true, projectId: 2 },
-      { id: 3, taskName: 'Fisk', state: false, projectId: 3 },
-      { id: 4, taskName: 'kiwi', state: true, projectId: 4 },
-      { id: 5, taskName: 'hh', state: true, projectId: 1 },
-      { id: 6, taskName: 'Breallld', state: true, projectId: 2 },
-      { id: 7, taskName: 'Fasdisk', state: false, projectId: 2 },
-      { id: 8, taskName: 'Potatasdis', state: true, projectId: 3 }
+      { id: 1, name: 'Tomates', state: true, projectId: 1 },
+      { id: 2, name: 'Bread', state: true, projectId: 2 },
+      { id: 3, name: 'Fisk', state: false, projectId: 3 },
+      { id: 4, name: 'kiwi', state: true, projectId: 4 },
+      { id: 5, name: 'hh', state: true, projectId: 1 },
+      { id: 6, name: 'Breallld', state: true, projectId: 2 },
+      { id: 7, name: 'Fasdisk', state: false, projectId: 2 },
+      { id: 8, name: 'Potatasdis', state: true, projectId: 3 }
     ],
     projectTasks: null,
     getProjectTask: null,
@@ -78,6 +79,13 @@ const TaskState = props => {
       payload: task
     });
   };
+  //get task redigerat och update tasks i reducer
+  const editTaskFn = task => {
+    dispatch({
+      type: EDIT_TASK,
+      payload: task
+    });
+  };
 
   return (
     <taskContext.Provider
@@ -90,7 +98,8 @@ const TaskState = props => {
         deleteTaskFn,
         showFormErrorFn,
         changeTaskStateFn,
-        getSelectedTaskFn
+        getSelectedTaskFn,
+        editTaskFn
       }}
     >
       {props.children}

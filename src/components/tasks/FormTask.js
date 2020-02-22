@@ -16,12 +16,15 @@ const FormTask = () => {
     addTaskFn,
     showFormErrorFn,
     getTasksFn,
-    selectedTask
+    selectedTask,
+    editTaskFn
   } = t_context;
 
   useEffect(() => {
     if (selectedTask !== null) {
-      setTaskName();
+      setTaskName(selectedTask);
+    } else {
+      setTaskName({ name: '' });
     }
   }, [selectedTask]);
   //{ taskName: 'Potatasdis', state: true, projectId: 3 }
@@ -33,21 +36,31 @@ const FormTask = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    //validation
     if (name.trim() === '') {
       showFormErrorFn();
       return;
     }
-    addTaskFn({
-      taskName: name,
-      state: false,
-      projectId: selectedProject.id
-    });
+
+    //kontroll  skapa eller  redigera
+    if (selectedTask === null) {
+      //ny task
+      addTaskFn({
+        name: name,
+        state: false,
+        projectId: selectedProject.id
+      });
+    } else {
+      editTaskFn({
+        id: selectedTask.id,
+        name: name,
+        state: selectedTask.state,
+        projectId: selectedProject.id
+      });
+    }
 
     getTasksFn(selectedProject.id);
-
     setTaskName({ name: '' });
-
-    console.log('submit');
   };
   //
   return (
@@ -70,7 +83,7 @@ const FormTask = () => {
             />
             <div className='input-group-append'>
               <button className='btn btn-outline-secondary' type='submit'>
-                Add
+                {selectedTask === null ? 'Add' : 'Edit'}
               </button>
             </div>
           </div>

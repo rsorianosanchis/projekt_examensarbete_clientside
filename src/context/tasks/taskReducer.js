@@ -4,7 +4,8 @@ import {
   SHOW_NEW_TASK_FORM_ERROR,
   DELETE_TASK,
   TASK_STATE,
-  SELECTED_TASK_TO_EDIT
+  SELECTED_TASK_TO_EDIT,
+  EDIT_TASK
 } from '../../types/types';
 
 export default (state, action) => {
@@ -45,6 +46,16 @@ export default (state, action) => {
       return {
         ...state,
         selectedTask: action.payload
+      };
+    case EDIT_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.map(item => {
+          if (item.id === action.payload.id) {
+            item.name = action.payload.name;
+          }
+          return item;
+        })
       };
     default:
       return state;

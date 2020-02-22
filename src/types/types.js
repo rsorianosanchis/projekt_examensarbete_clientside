@@ -12,3 +12,4 @@ export const SHOW_NEW_TASK_FORM_ERROR = 'SHOW_NEW_TASK_FORM_ERROR';
 export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_STATE = 'TASK_STATE';
 export const SELECTED_TASK_TO_EDIT = 'SELECTED_TASK_TO_EDIT';
+export const EDIT_TASK = 'EDIT_TASK';
