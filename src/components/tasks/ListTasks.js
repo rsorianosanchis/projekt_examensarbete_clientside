@@ -1,21 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import Task from './Task';
 import projectContext from '../../context/projects/projectContext';
+import taskContext from '../../context/tasks/taskContext';
 
 const ListTasks = () => {
-  const project = useContext(projectContext);
-  const { selectedProject, deleteProjectFn } = project;
-  console.log(selectedProject);
-
+  const p_context = useContext(projectContext);
+  const { selectedProject, deleteProjectFn } = p_context;
+  //
+  const t_context = useContext(taskContext);
+  const { projectTasks } = t_context;
+  //
   if (selectedProject === null) {
     return null;
   }
-  const projectTasks = [
-    { taskName: 'Tomates', state: true },
-    { taskName: 'Bread', state: true },
-    { taskName: 'Fisk', state: false },
-    { taskName: 'Potatis', state: true }
-  ];
 
   const handleClick = e => {
     e.preventDefault();

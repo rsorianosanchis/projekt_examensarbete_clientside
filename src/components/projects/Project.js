@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
 import projectContext from '../../context/projects/projectContext';
+import taskContext from '../../context/tasks/taskContext';
 
 const Project = ({ project }) => {
-  const { selectProjectFn } = useContext(projectContext);
+  const p_context = useContext(projectContext);
+  const { selectProjectFn } = p_context;
+  //
+  const t_context = useContext(taskContext);
+  const { getTasksFn } = t_context;
 
   const handleClick = e => {
     e.preventDefault();
     selectProjectFn(project);
-    console.log(project.id);
+    getTasksFn(project.id);
   };
 
   return (
