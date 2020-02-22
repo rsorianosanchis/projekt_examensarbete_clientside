@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import taskContext from './taskContext';
 import taskReducer from './taskReducer';
+import uuid from 'uuid';
 import {
   GET_TASKS_OF_PROJECT,
   ADD_TASK,
@@ -10,16 +11,7 @@ import {
 
 const TaskState = props => {
   const initialState = {
-    tasks: [
-      { id: 1, taskName: 'Tomates', state: true, projectId: 1 },
-      { id: 2, taskName: 'Bread', state: true, projectId: 2 },
-      { id: 3, taskName: 'Fisk', state: false, projectId: 3 },
-      { id: 4, taskName: 'kiwi', state: true, projectId: 4 },
-      { id: 5, taskName: 'hh', state: true, projectId: 1 },
-      { id: 6, taskName: 'Breallld', state: true, projectId: 2 },
-      { id: 7, taskName: 'Fasdisk', state: false, projectId: 2 },
-      { id: 8, taskName: 'Potatasdis', state: true, projectId: 3 }
-    ],
+    tasks: [],
     projectTasks: null,
     showFormNewTaskError: false
   };
@@ -39,7 +31,7 @@ const TaskState = props => {
   //add task to tasks
   const addTaskFn = task => {
     console.log(task);
-
+    task.id = uuid.v4();
     dispatch({
       type: ADD_TASK,
       payload: task

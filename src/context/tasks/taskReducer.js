@@ -17,7 +17,7 @@ export default (state, action) => {
     case ADD_TASK: //add task to genral tasks array
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasks: [action.payload, ...state.tasks],
         showFormNewTaskError: false
       };
     case SHOW_NEW_TASK_FORM_ERROR:

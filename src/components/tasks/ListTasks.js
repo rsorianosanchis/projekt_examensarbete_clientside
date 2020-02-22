@@ -35,7 +35,7 @@ const ListTasks = () => {
             There is not tasks for this project
           </li>
         ) : (
-          projectTasks.map(task => <Task key={task.taskName} task={task} />)
+          projectTasks.map(task => <Task key={task.id} task={task} />)
         )}
       </ul>
       <div className='card-footer mt-0 d-flex justify-content-center'>
