@@ -13,3 +13,6 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_STATE = 'TASK_STATE';
 export const SELECTED_TASK_TO_EDIT = 'SELECTED_TASK_TO_EDIT';
 export const EDIT_TASK = 'EDIT_TASK';
+//
+export const SHOW_MSG = 'SHOW_MSG';
+export const HIDE_MSG = 'HIDE_MSG';
