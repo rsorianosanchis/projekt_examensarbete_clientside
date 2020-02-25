@@ -4,8 +4,8 @@ import projectContext from '../../context/projects/projectContext';
 
 const ListProjects = () => {
   //
-  const listProjectsContext = useContext(projectContext);
-  const { projects, getProjectsFn } = listProjectsContext;
+  const p_Context = useContext(projectContext);
+  const { projects, getProjectsFn } = p_Context;
   //
   useEffect(() => {
     // fetch db to get projects

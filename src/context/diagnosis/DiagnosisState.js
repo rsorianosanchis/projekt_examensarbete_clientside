@@ -21,7 +21,7 @@ const DiagnosisState = props => {
       dispatch({
         type: HIDE_MSG
       });
-    }, 3000);
+    }, 4000);
   };
 
   return (

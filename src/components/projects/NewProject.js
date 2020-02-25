@@ -5,14 +5,14 @@ import projectContext from '../../context/projects/projectContext';
 const NewProject = () => {
   //
   //man har tillgänglit till alla ProjectState igenom context
-  const newProjectContext = useContext(projectContext);
+  const p_Context = useContext(projectContext);
   const {
     showFormNewProjectError,
     showForm,
     setShowFormFn,
     addNewProjectFn,
     showFormErrorFn
-  } = newProjectContext; // show/hide förmulär när click
+  } = p_Context; // show/hide förmulär när click
   //
   //local state
   const [project, setProject] = useState({

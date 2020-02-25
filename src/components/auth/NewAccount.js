@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import diagnosisContext from '../../context/diagnosis/diagnosisContext';
+import Alert from '../../components/diagnosis/Alert';
 //
 const NewAccount = () => {
+  //context values
+  const d_Context = useContext(diagnosisContext);
+  const { info, showInfoFn } = d_Context;
   //local state
   const [user, setUser] = useState({
     username: '',
@@ -20,7 +25,24 @@ const NewAccount = () => {
   const handleSubmit = e => {
     e.preventDefault();
     //validation no mellan rum
+    if (
+      username.trim() === '' ||
+      email.trim() === '' ||
+      password.trim() === '' ||
+      password2.trim() === ''
+    ) {
+      showInfoFn('All field are obligatory', 'danger');
+      return;
+    }
+    if (password.trim().length < 4) {
+      showInfoFn('Password min 6 char', 'danger');
+      return;
+    }
 
+    if (password.trim() !== password2.trim()) {
+      showInfoFn('Passwords are different', 'danger');
+      return;
+    }
     //control password min 6 char
 
     // password equal
@@ -31,6 +53,7 @@ const NewAccount = () => {
   return (
     <div>
       <h1>Create an user account</h1>
+      {info ? <Alert msg={info.msg} cat={info.category} /> : null}
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label htmlFor='exampleInputName'>User Name</label>
