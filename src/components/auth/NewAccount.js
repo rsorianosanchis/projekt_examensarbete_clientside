@@ -2,11 +2,14 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import diagnosisContext from '../../context/diagnosis/diagnosisContext';
 import Alert from '../../components/diagnosis/Alert';
+import authContext from '../../context/auth/authContext';
 //
 const NewAccount = () => {
   //context values
   const d_Context = useContext(diagnosisContext);
+  const a_Context = useContext(authContext);
   const { info, showInfoFn } = d_Context;
+  const { registerUserFn } = a_Context;
   //local state
   const [user, setUser] = useState({
     username: '',
@@ -35,7 +38,7 @@ const NewAccount = () => {
       return;
     }
     //control password min 6 char
-    if (password.trim().length < 4) {
+    if (password.trim().length < 6) {
       showInfoFn('Password min 6 char', 'danger');
       return;
     }
@@ -45,6 +48,7 @@ const NewAccount = () => {
       return;
     }
     //action
+    registerUserFn({ username, email, password });
   };
 
   return (
