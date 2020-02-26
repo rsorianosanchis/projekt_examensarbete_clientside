@@ -26,7 +26,7 @@ const AuthState = props => {
   const registerUserFn = async data => {
     try {
       const response = await clientAxios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/backend/user`, //no funciona
+        '/backend/user', //no funciona
         data
       );
       console.log(response.data); ///token
