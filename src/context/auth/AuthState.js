@@ -24,10 +24,14 @@ const AuthState = props => {
   return (
     <authContext.Provider
       value={{
-        token: state.token
+        token: state.token,
+        inSession: state.inSession,
+        user: state.user
       }}
     >
       {props.children}
     </authContext.Provider>
   );
 };
+
+export default AuthState;

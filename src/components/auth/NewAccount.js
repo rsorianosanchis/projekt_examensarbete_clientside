@@ -34,19 +34,16 @@ const NewAccount = () => {
       showInfoFn('All field are obligatory', 'danger');
       return;
     }
+    //control password min 6 char
     if (password.trim().length < 4) {
       showInfoFn('Password min 6 char', 'danger');
       return;
     }
-
+    // password equal
     if (password.trim() !== password2.trim()) {
       showInfoFn('Passwords are different', 'danger');
       return;
     }
-    //control password min 6 char
-
-    // password equal
-
     //action
   };
 
