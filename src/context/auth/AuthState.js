@@ -25,10 +25,9 @@ const AuthState = props => {
   //user register
   const registerUserFn = async data => {
     try {
-      const response = await clientAxios.post(
-        '/backend/user', //no funciona
-        data
-      );
+      console.log(data);
+
+      const response = await clientAxios.post('/backend/user', data);
       console.log(response.data); ///token
       dispatch({
         type: REGISTER_OK,
@@ -40,6 +39,11 @@ const AuthState = props => {
         type: REGISTER_ERROR
       });
     }
+  };
+  //loga in
+  const logInFn = async data => {
+    try {
+    } catch (error) {}
   };
 
   return (

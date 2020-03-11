@@ -20,9 +20,12 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='container px-5'>
+      <form
+        onSubmit={handleSubmit}
+        className='d-flex flex-column justify-content-start align-content-center mx-5'
+      >
+        <h1>Log in</h1>
         <div className='form-group'>
           <label htmlFor='exampleInputEmail1'>Email address</label>
           <input

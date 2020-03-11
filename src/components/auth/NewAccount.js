@@ -52,10 +52,13 @@ const NewAccount = () => {
   };
 
   return (
-    <div>
-      <h1>Create an user account</h1>
-      {info ? <Alert msg={info.msg} cat={info.category} /> : null}
-      <form onSubmit={handleSubmit}>
+    <div className='container px-5'>
+      <form
+        onSubmit={handleSubmit}
+        className='d-flex flex-column justify-content-start align-content-center mx-5'
+      >
+        <h1>Create an user account</h1>
+        {info ? <Alert msg={info.msg} cat={info.category} /> : null}
         <div className='form-group'>
           <label htmlFor='exampleInputName'>User Name</label>
           <input
